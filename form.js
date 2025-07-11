@@ -2,7 +2,7 @@
 const SHEET_ID = '1SVWkBGZq-lunEdLfsHfY1gKElN4sVEhfG1F75hp4hK0';
 const SHEET_TAB_NAME = 'Compras';
 // Cole aqui a nova URL do Web App
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxhALYDsmeEDbF0enXIRO9a17Vcgy7NNYh0G-yGDrBfQb0Y8OtNxOXOquFDwvyrGqH7/exec';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyCpHO5NuVMQWnJZAmVNxDeXupzZyf1pdSI-oKImQUjvmG6C_frDjpMfrOZ0bus3dU/exec';
 
 // Função para carregar dados
 function carregarDados() {
