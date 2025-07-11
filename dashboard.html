@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Prime Construções</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h1>Dashboard Prime</h1>
+            <nav>
+                <a href="form.html" class="menu-item">
+                    <i class="fas fa-home"></i>
+                    <span>Início</span>
+                </a>
+                <a href="dashboard.html" class="menu-item active">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="fas fa-users"></i>
+                    <span>Cadastro de Clientes</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="fas fa-user-tie"></i>
+                    <span>Cadastro de Funcionários</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="fas fa-tags"></i>
+                    <span>Cadastro de Produtos</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="fas fa-box"></i>
+                    <span>Cadastro de Pedidos</span>
+                </a>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Filtros -->
+            <div class="filters-section">
+                <div class="filter-group">
+                    <label for="filterMes">Mês:</label>
+                    <select id="filterMes" class="filter-select">
+                        <option value="">Todos</option>
+                        <option value="1">Janeiro</option>
+                        <option value="2">Fevereiro</option>
+                        <option value="3">Março</option>
+                        <option value="4">Abril</option>
+                        <option value="5">Maio</option>
+                        <option value="6">Junho</option>
+                        <option value="7">Julho</option>
+                        <option value="8">Agosto</option>
+                        <option value="9">Setembro</option>
+                        <option value="10">Outubro</option>
+                        <option value="11">Novembro</option>
+                        <option value="12">Dezembro</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="filterAno">Ano:</label>
+                    <select id="filterAno" class="filter-select">
+                        <option value="">Todos</option>
+                        <option value="2024">2024</option>
+                        <option value="2023">2023</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="filterObra">Obra:</label>
+                    <select id="filterObra" class="filter-select">
+                        <option value="">Todas</option>
+                        <!-- Será preenchido dinamicamente -->
+                    </select>
+                </div>
+                <button id="aplicarFiltros" class="filter-button">
+                    <i class="fas fa-filter"></i>
+                    Aplicar Filtros
+                </button>
+            </div>
+
+            <div class="dashboard-grid">
+                <!-- Card 1: Total de Compras -->
+                <div class="card sales">
+                    <div class="card-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>Total Despesas</h3>
+                        <p class="number">R$ 45.680,00</p>
+                        <p class="trend positive">
+                            <i class="fas fa-arrow-up"></i>
+                            12.5%
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 2: Clientes -->
+                <div class="card customers">
+                    <div class="card-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>Clientes</h3>
+                        <p class="number">---</p>
+                        <p class="trend positive">
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 3: Produtos -->
+                <div class="card products">
+                    <div class="card-icon">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>Produtos</h3>
+                        <p class="number">384</p>
+                        <p class="trend positive">
+                            <i class="fas fa-arrow-up"></i>
+                            5.2%
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 4: Pedidos -->
+                <div class="card orders">
+                    <div class="card-icon">
+                        <i class="fas fa-clipboard-list"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>Pedidos</h3>
+                        <p class="number">642</p>
+                        <p class="trend negative">
+                            <i class="fas fa-arrow-down"></i>
+                            2.1%
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Gráfico de Área -->
+                <div class="card chart-area">
+                    <h3>Vendas Mensais</h3>
+                    <canvas id="areaChart"></canvas>
+                </div>
+
+                <!-- Gráfico de Rosca -->
+                <div class="card chart-donut">
+                    <h3>Distribuição de Vendas</h3>
+                    <canvas id="donutChart"></canvas>
+                </div>
+
+                <!-- Últimas Vendas -->
+                <div class="card recent-sales">
+                    <h3>Últimas Vendas</h3>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Cliente</th>
+                                    <th>Produto</th>
+                                    <th>Valor</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>João Silva</td>
+                                    <td>Tijolo Cerâmico</td>
+                                    <td>R$ 2.500,00</td>
+                                    <td><span class="status completed">Concluído</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Maria Santos</td>
+                                    <td>Cimento Portland</td>
+                                    <td>R$ 1.800,00</td>
+                                    <td><span class="status pending">Pendente</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Pedro Oliveira</td>
+                                    <td>Areia Fina</td>
+                                    <td>R$ 950,00</td>
+                                    <td><span class="status processing">Processando</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Ana Costa</td>
+                                    <td>Telhas</td>
+                                    <td>R$ 3.200,00</td>
+                                    <td><span class="status completed">Concluído</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Produtos Mais Vendidos -->
+                <div class="card top-products">
+                    <h3>Produtos Mais Vendidos</h3>
+                    <div class="product-list">
+                        <div class="product-item">
+                            <div class="product-info">
+                                <h4>Tijolo Cerâmico</h4>
+                                <p>2.500 unidades</p>
+                            </div>
+                            <div class="product-progress">
+                                <div class="progress-bar" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="product-item">
+                            <div class="product-info">
+                                <h4>Cimento Portland</h4>
+                                <p>1.800 sacos</p>
+                            </div>
+                            <div class="product-progress">
+                                <div class="progress-bar" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        <div class="product-item">
+                            <div class="product-info">
+                                <h4>Areia Fina</h4>
+                                <p>1.200 m³</p>
+                            </div>
+                            <div class="product-progress">
+                                <div class="progress-bar" style="width: 60%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html> 

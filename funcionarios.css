@@ -1,0 +1,7 @@
+@import url('form.css');
+
+.menu-item.active {
+  background: rgba(255, 255, 255, 0.25);
+  font-weight: bold;
+  border-left: 4px solid white;
+}
