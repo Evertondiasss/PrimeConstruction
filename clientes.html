@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Cadastro de Clientes - Prime Construções</title>
+  <title>Cadastro de Fornecedores - Prime Construções</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
   <link rel="stylesheet" href="form.css"/>
@@ -16,7 +16,7 @@
       <nav>
         <a href="form.html" class="menu-item"><i class="fas fa-home"></i><span>Início</span></a>
         <a href="dashboard.html" class="menu-item"><i class="fas fa-chart-line"></i><span>Dashboard</span></a>
-        <a href="clientes.html" class="menu-item active"><i class="fas fa-users"></i><span>Cadastro de Clientes</span></a>
+        <a href="clientes.html" class="menu-item active"><i class="fas fa-truck"></i><span>Cadastro de Fornecedores</span></a>
         <a href="funcionarios.html" class="menu-item"><i class="fas fa-user-tie"></i><span>Cadastro de Funcionários</span></a>
         <a href="categorias.html" class="menu-item"><i class="fas fa-layer-group"></i><span>Cadastro de Categoria</span></a>
         <a href="produtos.html" class="menu-item"><i class="fas fa-tags"></i><span>Cadastro de Produtos</span></a>
@@ -26,25 +26,37 @@
 
     <div class="main-content">
       <div class="form-container">
-        <h2>Cadastro de Clientes</h2>
-        <form id="clienteForm">
+        <h2>Cadastro de Fornecedores</h2>
+        <p class="hint">Os dados serão enviados para o serviço conectado ao MySQL informado na configuração.</p>
+        <form id="fornecedorForm">
           <div class="form-group">
-            <label for="nomeCliente">Nome</label>
-            <input type="text" id="nomeCliente" name="nomeCliente" class="form-control" placeholder="Ex: João Silva" required />
+            <label for="nomeFornecedor">Nome do fornecedor</label>
+            <input type="text" id="nomeFornecedor" name="nomeFornecedor" class="form-control" placeholder="Ex: Construtora Alfa" required />
           </div>
 
           <div class="form-group">
-            <label for="telefoneCliente">Telefone</label>
-            <input type="tel" id="telefoneCliente" name="telefoneCliente" class="form-control" placeholder="(99) 99999-9999" required />
+            <label for="cnpjFornecedor">CNPJ</label>
+            <input type="text" id="cnpjFornecedor" name="cnpjFornecedor" class="form-control" placeholder="00.000.000/0000-00" required />
           </div>
 
-          <button type="submit" class="btn-submit">Cadastrar Cliente</button>
+          <div class="form-group">
+            <label for="enderecoFornecedor">Endereço</label>
+            <input type="text" id="enderecoFornecedor" name="enderecoFornecedor" class="form-control" placeholder="Rua Exemplo, 123 - Centro" required />
+          </div>
+
+          <div class="form-group">
+            <label for="telefoneFornecedor">Telefone</label>
+            <input type="tel" id="telefoneFornecedor" name="telefoneFornecedor" class="form-control" placeholder="(99) 99999-9999" required />
+          </div>
+
+          <button type="submit" class="btn-submit">Cadastrar Fornecedor</button>
         </form>
 
         <hr style="margin: 2rem 0;" />
 
-        <h3 style="margin-bottom: 1rem;">Clientes Cadastrados</h3>
-        <ul id="listaClientes" class="form-control" style="list-style: none; padding-left: 1rem; background: #fdfdfd;">
+        <h3 style="margin-bottom: 1rem;">Fornecedores Cadastrados</h3>
+        <p id="statusMensagem" class="status-mensagem" hidden>Carregando fornecedores...</p>
+        <ul id="listaFornecedores" class="form-control" style="list-style: none; padding-left: 1rem; background: #fdfdfd;">
           <li>Carregando...</li>
         </ul>
       </div>
