@@ -5,3 +5,28 @@
   font-weight: bold;
   border-left: 4px solid white;
 }
+
+.form-container .hint {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-bottom: 1.5rem;
+}
+
+.status-mensagem {
+  font-size: 0.9rem;
+  margin: 0 0 1rem 0;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+.status-mensagem[data-tipo='erro'] {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.status-mensagem[data-tipo='sucesso'] {
+  background: #dcfce7;
+  color: #15803d;
+}
